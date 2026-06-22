@@ -1,0 +1,34 @@
+# ---------- Python (backend) ----------
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+instance/
+
+# ---------- Node / Frontend ----------
+node_modules/
+dist/
+build/
+.next/
+.cache/
+npm-debug.log*
+yarn-error.log*
+
+# ---------- Environment variables ----------
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+
+# ---------- Editor / OS ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---------- Logs ----------
+*.log

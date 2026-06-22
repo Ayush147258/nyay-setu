@@ -1,0 +1,825 @@
+<USER_REQUEST>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — NyaySetu</title>
+<meta name="description" content="NyaySetu dashboard: case docket overview, petitions drafted this week, and recent case activity." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B2A38'/%3E%3Cpath d='M16 22h32M32 22v24M22 46h20' stroke='%23B23A2E' stroke-width='3.4' stroke-linecap='round' fill='none'/%3E%3Ccircle cx='16' cy='27' r='3' stroke='%23B8965A' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='48' cy='27' r='3' stroke='%23B8965A' stroke-width='1.6' fill='none'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Devanagari:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A38;
+    --ink-soft:#6B6457;
+    --ink-faint:#9A917F;
+    --bg:#F6F4EE;
+    --surface:#FFFFFF;
+    --border:#E8E2D2;
+    --border-soft:#F0EBDD;
+    --tape:#B23A2E;
+    --tape-soft:#B23A2E14;
+    --tape-tint:#FBEAE6;
+    --brass:#B8965A;
+    --brass-tint:#FBF1DF;
+    --indigo:#4A5FBA;
+    --indigo-tint:#EAEDFA;
+    --green:#2E7D4F;
+    --green-tint:#E7F4EC;
+    --shadow-sm:0 1px 2px rgba(27,42,56,0.04), 0 1px 1px rgba(27,42,56,0.03);
+    --shadow-md:0 8px 24px -12px rgba(27,42,56,0.14);
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:16px;
+    --font-display:'Fraunces', serif;
+    --font-body:'IBM Plex Sans','IBM Plex Sans Devanagari',sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-font-smoothing:antialiased;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:14.5px;
+    line-height:1.5;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
+  p{margin:0;}
+  h1,h2,h3{margin:0;}
+
+  :focus-visible{
+    outline:2px solid var(--tape);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .icon{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ============ SHELL ============ */
+  .shell{
+    display:flex;
+    min-height:100vh;
+  }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar{
+    width:248px;
+    flex:none;
+    background:var(--surface);
+    border-right:1px solid var(--border);
+    display:flex;
+    flex-direction:column;
+    position:sticky;
+    top:0;
+    height:100vh;
+  }
+  .sidebar-brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:22px 22px 18px;
+  }
+  .brand-mark{
+    width:36px;height:36px;flex:none;
+    border-radius:10px;
+    background:linear-gradient(155deg,#22344A,#1B2A38);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 10px -4px rgba(27,42,56,0.5);
+  }
+  .brand-mark svg{width:19px;height:19px;}
+  .brand-name{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:17.5px;
+    color:var(--ink);
+    line-height:1.15;
+  }
+  .brand-name small{
+    display:block;
+    font-family:'IBM Plex Sans Devanagari',sans-serif;
+    font-weight:400;
+    font-size:11px;
+    color:var(--ink-faint);
+    margin-top:2px;
+    letter-spacing:0.01em;
+  }
+
+  .sidebar-nav{
+    padding:6px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .nav-section-label{
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    padding:16px 10px 8px;
+  }
+  .nav-item{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:9px 12px;
+    border-radius:var(--radius-sm);
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink-soft);
+    border-left:2.5px solid transparent;
+    transition:background .15s ease, color .15s ease;
+  }
+  .nav-item .icon{color:var(--ink-faint); transition:color .15s ease;}
+  .nav-item:hover{background:var(--bg); color:var(--ink);}
+  .nav-item.active{
+    background:var(--tape-tint);
+    color:var(--tape);
+    border-left-color:var(--tape);
+    margin-left:-2.5px;
+  }
+  .nav-item.active .icon{color:var(--tape);}
+  .nav-item .badge{
+    margin-left:auto;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    font-weight:600;
+    background:var(--ink);
+    color:var(--surface);
+    padding:1px 6px;
+    border-radius:20px;
+  }
+  .nav-item.active .badge{background:var(--tape);}
+
+  .sidebar-bottom{
+    margin-top:auto;
+    padding:16px 14px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .help-card{
+    background:linear-gradient(160deg,#1B2A38,#22344A);
+    border-radius:var(--radius-md);
+    padding:16px 16px 18px;
+    color:var(--surface);
+  }
+  .help-card p.help-title{
+    font-size:13.5px;
+    font-weight:600;
+    line-height:1.4;
+  }
+  .help-card p.help-sub{
+    margin-top:5px;
+    font-size:12px;
+    color:rgba(239,233,220,0.62);
+    line-height:1.5;
+  }
+  .help-card a{
+    margin-top:12px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--surface);
+    background:rgba(239,233,220,0.1);
+    border:1px solid rgba(239,233,220,0.22);
+    padding:7px 11px;
+    border-radius:7px;
+  }
+  .help-card a:hover{background:rgba(239,233,220,0.16);}
+
+  .account-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 8px;
+    border-top:1px solid var(--border-soft);
+    padding-top:14px;
+  }
+  .avatar{
+    width:32px;height:32px;flex:none;
+    border-radius:50%;
+    background:var(--tape);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:12px;
+  }
+  .account-row .who{flex:1; min-width:0;}
+  .account-row .who p{font-size:13px; font-weight:600; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .account-row .who span{font-size:11.5px; color:var(--ink-faint);}
+  .account-row .icon{color:var(--ink-faint);}
+
+  /* ============ MAIN ============ */
+  .main{
+    flex:1;
+    min-width:0;
+    padding:28px 36px 56px;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:28px;
+  }
+  .topbar h1{
+    font-family:var(--font-display);
+    font-size:27px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .topbar .sub{
+    margin-top:5px;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+  .docket-tag{
+    margin-top:9px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+  .docket-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--brass);}
+
+  .topbar-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex:none;
+  }
+  .icon-btn{
+    width:38px;height:38px;
+    border-radius:var(--radius-sm);
+    border:1px solid var(--border);
+    background:var(--surface);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-soft);
+    position:relative;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .icon-btn:hover{border-color:var(--ink-faint); color:var(--ink);}
+  .icon-btn .dot{
+    position:absolute; top:7px; right:8px;
+    width:6px;height:6px; border-radius:50%;
+    background:var(--tape);
+    border:1.5px solid var(--surface);
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--tape);
+    color:#fff;
+    font-size:13.5px;
+    font-weight:600;
+    padding:10px 16px;
+    border-radius:var(--radius-sm);
+    box-shadow:0 8px 18px -8px rgba(178,58,46,0.55);
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn-primary:hover{background:#962F25;}
+  .btn-primary:active{transform:translateY(1px);}
+
+  /* ============ STAT CARDS ============ */
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:24px;
+  }
+  .stat-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:20px 20px 18px;
+    box-shadow:var(--shadow-sm);
+    position:relative;
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .stat-card:hover{box-shadow:var(--shadow-md); transform:translateY(-2px);}
+  .stat-card::before{
+    content:"";
+    position:absolute; top:0; left:18px;
+    width:22px; height:5px;
+    border-radius:0 0 4px 4px;
+    background:var(--stat-accent, var(--brass));
+    opacity:0.55;
+  }
+  .stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .stat-icon{
+    width:38px;height:38px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--stat-bg, var(--brass-tint));
+    color:var(--stat-accent, var(--brass));
+  }
+  .stat-trend{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--green);
+    display:flex;align-items:center;gap:3px;
+  }
+  .stat-trend.flat{color:var(--ink-faint);}
+  .stat-trend svg{width:12px;height:12px;}
+  .stat-num{
+    margin-top:16px;
+    font-family:var(--font-mono);
+    font-size:26px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .stat-label{
+    margin-top:4px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ CONTENT GRID ============ */
+  .content-grid{
+    display:grid;
+    grid-template-columns:1.65fr 1fr;
+    gap:18px;
+    align-items:start;
+  }
+
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-sm);
+  }
+  .panel-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding:20px 22px 0;
+  }
+  .panel-head h2{
+    font-size:16px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .panel-head .panel-sub{
+    margin-top:3px;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+  .select{
+    font-family:var(--font-body);
+    font-size:12.5px;
+    font-weight:500;
+    color:var(--ink-soft);
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:7px 30px 7px 11px;
+    background:var(--surface) url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%236B6457" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpolyline points="6 9 12 15 18 9"%3E%3C/polyline%3E%3C/svg%3E') no-repeat right 10px center;
+    appearance:none;
+    -webkit-appearance:none;
+  }
+
+  .link-sm{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--tape);
+    display:inline-flex;
+    align-items:center;
+    gap:3px;
+  }
+  .link-sm:hover{color:#962F25;}
+
+  /* ----- chart ----- */
+  .chart-wrap{padding:14px 14px 18px;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-foot{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 22px 18px;
+    font-size:12px;
+    color:var(--ink-faint);
+  }
+  .chart-foot .live-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--green);
+  }
+
+  /* ----- recent cases ----- */
+  .case-list{padding:14px 10px 10px;}
+  .case-row{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:var(--radius-sm);
+    transition:background .15s ease;
+  }
+  .case-row:hover{background:var(--bg);}
+  .case-avatar{
+    width:36px;height:36px;flex:none;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);
+    font-weight:600;
+    font-size:12px;
+    color:#fff;
+  }
+  .case-body{flex:1; min-width:0;}
+  .case-body .name{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .case-body .meta{
+    margin-top:2px;
+    font-size:12px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .case-body .meta .file-no{
+    font-family:var(--font-mono);
+    color:var(--ink-faint);
+  }
+  .case-body .time{
+    margin-top:5px;
+    font-size:11px;
+    color:var(--ink-faint);
+  }
+  .case-side{
+    flex:none;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:8px;
+  }
+  .pill{
+    font-size:11px;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .pill-filed{background:var(--green-tint); color:var(--green);}
+  .pill-pending{background:var(--brass-tint); color:#92702E;}
+  .pill-processing{background:var(--indigo-tint); color:var(--indigo);}
+  .more-btn{color:var(--ink-faint); padding:2px;}
+  .more-btn:hover{color:var(--ink-soft);}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1180px){
+    .content-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:980px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:840px){
+    .sidebar{
+      position:fixed;
+      left:0; top:0; bottom:0;
+      transform:translateX(-100%);
+      transition:transform .2s ease;
+      z-index:50;
+      box-shadow:0 0 0 100vmax rgba(27,42,56,0);
+    }
+    .sidebar.open{transform:translateX(0); box-shadow:0 0 0 100vmax rgba(27,42,56,0.35);}
+    .main{padding:20px 18px 48px;}
+    .mobile-bar{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+    }
+  }
+  @media (min-width:841px){
+    .mobile-bar{display:none;}
+  }
+  @media (max-width:640px){
+    .stats-grid{grid-template-columns:1fr;}
+    .topbar{flex-direction:column;}
+    .topbar-actions{width:100%;justify-content:space-between;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="sidebar" id="sidebar">
+    <a href="#" class="sidebar-brand" aria-label="NyaySetu home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 8h14M12 8v11M7 19h10" stroke="#B23A2E" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="5" cy="11" r="2.2" stroke="#B8965A" stroke-width="1.3"/>
+          <circle cx="19" cy="11" r="2.2" stroke="#B8965A" stroke-width="1.3"/>
+        </svg>
+      </span>
+      <span class="brand-name">NyaySetu<small>न्यायसेतु · docket</small></span>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Primary">
+      <a href="#" class="nav-item active">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 18v3M8 21h8"/><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/></svg>
+        New case
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H17a2 2 0 0 1 2 2v14H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M19 4v16"/></svg>
+        Case library
+        <span class="badge">184</span>
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="6" rx="1.5"/><rect x="3" y="11" width="18" height="10" rx="1.5"/><path d="M8 16h4"/></svg>
+        Agent arena
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Tracking
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 7-9"/><path d="M14 6h5v5"/></svg>
+        AI insights
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+        Architecture
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-card">
+        <p class="help-title">Stuck on a filing?</p>
+        <p class="help-sub">Hand a difficult case to the mediator agent for a second opinion.</p>
+        <a href="#">
+          <svg class="icon" style="width:14px;height:14px" viewBox="0 0 24 24"><path d="M5 8h14M12 8v11M7 19h10"/></svg>
+          Talk to mediator
+        </a>
+      </div>
+      <div class="account-row">
+        <span class="avatar">AK</span>
+        <div class="who">
+          <p>Ayush Kumar</p>
+          <span>Case officer</span>
+        </div>
+        <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div class="mobile-bar">
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <span class="brand-name" style="font-size:15px;">NyaySetu</span>
+    </div>
+
+    <div class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="sub">Welcome back, Ayush. Here's what's moving across your docket today.</p>
+        <p class="docket-tag">Synced 2 minutes ago</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Search">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Notifications">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+          <span class="dot" aria-hidden="true"></span>
+        </button>
+        <a href="#" class="btn-primary">
+          <svg class="icon" style="width:15px;height:15px;color:#fff" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          New case
+        </a>
+      </div>
+    </div>
+
+    <section class="stats-grid" aria-label="Docket summary">
+      <div class="stat-card" style="--stat-accent:#3B4F6B; --stat-bg:#EAEEF3;">
+        <div class="stat-top">
+          <span class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H17a2 2 0 0 1 2 2v14H6.5A2.5 2.5 0 0 1 4 17.5z"/><path d="M19 4v16"/></svg></span>
+          <span class="stat-trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>+12 this wk</span>
+        </div>
+        <p class="stat-num">184</p>
+        <p class="stat-label">Total cases on docket</p>
+      </div>
+
+      <div class="stat-card" style="--stat-accent:var(--indigo); --stat-bg:var(--indigo-tint);">
+        <div class="stat-top">
+          <span class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+          <span class="stat-trend flat">steady</span>
+        </div>
+        <p class="stat-num">47</p>
+        <p class="stat-label">In progress with agents</p>
+      </div>
+
+      <div class="stat-card" style="--stat-accent:#92702E; --stat-bg:var(--brass-tint);">
+        <div class="stat-top">
+          <span class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M9 12.5l2 2 4-4.5"/><rect x="4" y="4" width="16" height="16" rx="2.5"/></svg></span>
+          <span class="stat-trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>+5 this wk</span>
+        </div>
+        <p class="stat-num">19</p>
+        <p class="stat-label">Ready to file</p>
+      </div>
+
+      <div class="stat-card" style="--stat-accent:var(--green); --stat-bg:var(--green-tint);">
+        <div class="stat-top">
+          <span class="stat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5.5"/></svg></span>
+          <span class="stat-trend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>+9 this wk</span>
+        </div>
+        <p class="stat-num">118</p>
+        <p class="stat-label">Filed with magistrate</p>
+      </div>
+    </section>
+
+    <section class="content-grid">
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Petitions drafted overview</h2>
+            <p class="panel-sub">Across all case types, this docket</p>
+          </div>
+          <select class="select" aria-label="Date range">
+            <option>Last 7 days</option>
+            <option>Last 30 days</option>
+            <option>Last 90 days</option>
+          </select>
+        </div>
+
+        <div class="chart-wrap">
+          <svg viewBox="0 0 700 250" role="img" aria-label="Line chart of petitions drafted per day, rising from 8 on Monday to 27 on Sunday">
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#B23A2E" stop-opacity="0.16"/>
+                <stop offset="100%" stop-color="#B23A2E" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line x1="60" y1="40" x2="660" y2="40" stroke="#E8E2D2" stroke-width="1" stroke-dasharray="3 4"/>
+            <line x1="60" y1="90" x2="660" y2="90" stroke="#E8E2D2" stroke-width="1" stroke-dasharray="3 4"/>
+            <line x1="60" y1="140" x2="660" y2="140" stroke="#E8E2D2" stroke-width="1" stroke-dasharray="3 4"/>
+            <line x1="60" y1="190" x2="660" y2="190" stroke="#E8E2D2" stroke-width="1" stroke-dasharray="3 4"/>
+
+            <text x="48" y="44" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9A917F">30</text>
+            <text x="48" y="94" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9A917F">20</text>
+            <text x="48" y="144" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9A917F">10</text>
+            <text x="48" y="194" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="#9A917F">0</text>
+
+            <path d="M60,152 C110,152 110,122 160,122 C210,122 210,140 260,140 C310,140 310,110 360,110 C410,110 410,68 460,68 C510,68 510,86 560,86 C610,86 610,38 660,38 L660,190 L60,190 Z" fill="url(#areaFill)"/>
+            <path d="M60,152 C110,152 110,122 160,122 C210,122 210,140 260,140 C310,140 310,110 360,110 C410,110 410,68 460,68 C510,68 510,86 560,86 C610,86 610,38 660,38" fill="none" stroke="#B23A2E" stroke-width="2.5" stroke-linecap="round"/>
+
+            <g fill="#B23A2E">
+              <circle cx="60" cy="152" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="160" cy="122" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="260" cy="140" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="360" cy="110" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="460" cy="68" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="560" cy="86" r="4" fill="#fff" stroke="#B23A2E" stroke-width="2.5"/>
+              <circle cx="660" cy="38" r="5" fill="#B23A2E" stroke="#fff" stroke-width="2"/>
+            </g>
+
+            <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="#6B6457" text-anchor="middle">
+              <text x="60" y="216">Mon</text>
+              <text x="160" y="216">Tue</text>
+              <text x="260" y="216">Wed</text>
+              <text x="360" y="216">Thu</text>
+              <text x="460" y="216">Fri</text>
+              <text x="560" y="216">Sat</text>
+              <text x="660" y="216">Sun</text>
+            </g>
+          </svg>
+        </div>
+        <div class="chart-foot">
+          <span class="live-dot" aria-hidden="true"></span>
+          27 petitions drafted yesterday — the highest single day this month
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Recent cases</h2>
+            <p class="panel-sub">Latest activity on the docket</p>
+          </div>
+          <a href="#" class="link-sm">View all
+            <svg class="icon" style="width:13px;height:13px" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="case-list">
+          <div class="case-row">
+            <span class="case-avatar" style="background:#B23A2E;">RK</span>
+            <div class="case-body">
+              <p class="name">Ravi Kumar</p>
+              <p class="meta">FIR registration · <span class="file-no">156(3) CrPC</span></p>
+              <p class="time">Today, 10:30 AM</p>
+            </div>
+            <div class="case-side">
+              <span class="pill pill-filed">Filed</span>
+              <button class="more-btn" aria-label="More options">
+                <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-avatar" style="background:#B8965A;">SD</span>
+            <div class="case-body">
+              <p class="name">Sunita Devi</p>
+              <p class="meta">Domestic violence · <span class="file-no">PWDVA</span></p>
+              <p class="time">Today, 09:15 AM</p>
+            </div>
+            <div class="case-side">
+              <span class="pill pill-pending">Pending</span>
+              <button class="more-btn" aria-label="More options">
+                <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-avatar" style="background:#4A5FBA;">AK</span>
+            <div class="case-body">
+              <p class="name">Amit Kumar</p>
+              <p class="meta">Land dispute · <span class="file-no">Sec 144 CrPC</span></p>
+              <p class="time">Yesterday</p>
+            </div>
+            <div class="case-side">
+              <span class="pill pill-processing">Processing</span>
+              <button class="more-btn" aria-label="More options">
+                <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="case-row">
+            <span class="case-avatar" style="background:#2E7D4F;">MJ</span>
+            <div class="case-body">
+              <p class="name">Meena Joshi</p>
+              <p class="meta">Consumer claim · <span class="file-no">CPA</span></p>
+              <p class="time">Yesterday</p>
+            </div>
+            <div class="case-side">
+              <span class="pill pill-filed">Filed</span>
+              <button class="more-btn" aria-label="More options">
+                <svg class="icon" style="width:15px;height:15px" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', (e) => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+      sidebar.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+</body>
+</html>  i want this dashboard page 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-21T18:08:42+05:30.
+</ADDITIONAL_METADATA>

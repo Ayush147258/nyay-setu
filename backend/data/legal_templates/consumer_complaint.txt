@@ -1,0 +1,40 @@
+To,
+The President,
+District Consumer Disputes Redressal Commission,
+{district}, {state}
+
+COMPLAINT UNDER SECTION 35 OF THE CONSUMER PROTECTION ACT, 2019
+
+Subject: Complaint against {seller_name} for defective product / deficiency of service
+
+Complainant:
+{complainant_name}
+{complainant_address}
+Contact: {complainant_contact}
+
+Opposite Party:
+{seller_name}
+{seller_address}
+
+FACTS OF THE COMPLAINT:
+On {purchase_date}, I purchased {product_description} from {seller_name} for Rs. {purchase_amount}.
+The product / service was found to be {defect_description}.
+
+LEGAL GROUNDS:
+- Section 2(47) Consumer Protection Act 2019 (deficiency of service)
+- Section 2(10) Consumer Protection Act 2019 (defective goods)
+
+RELIEF CLAIMED:
+1. Replacement / Refund of Rs. {purchase_amount}
+2. Compensation for mental agony: Rs. {compensation_claimed}
+3. Cost of litigation: Rs. {litigation_cost}
+
+DOCUMENTS ENCLOSED: {enclosed_documents}
+
+PRAYER: This Hon'ble Commission is respectfully prayed to allow this complaint and grant
+the relief claimed in the interest of justice.
+
+Date: {filing_date}
+
+{complainant_name}
+(Complainant)

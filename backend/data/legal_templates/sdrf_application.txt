@@ -1,0 +1,28 @@
+TO,
+The District Magistrate / District Collector,
+{district}, {state}
+
+SUBJECT: Application for Disaster Relief Compensation under SDRF for flood damage
+
+Respected Sir/Madam,
+
+I, {complainant_name}, am a resident of Village {village}, Tehsil {tehsil}, District {district}.
+
+DAMAGE DETAILS:
+- Date of Disaster: {disaster_date}
+- Type of Disaster: {disaster_type}
+- Damage to: {damage_type} (house / crop / livestock / other)
+- Estimated Loss: Rs. {estimated_loss}
+
+I have not received any compensation despite {time_elapsed} having passed since the disaster.
+Under SDRF Guidelines 2015, affected families are entitled to compensation within 30 days.
+
+DOCUMENTS ENCLOSED: {enclosed_documents}
+
+PRAYER: Kindly arrange for survey and compensation at the earliest.
+
+Date: {filing_date}
+Place: {village}, {district}
+
+{complainant_name}
+Aadhaar: {aadhaar_last4}

@@ -1,0 +1,26 @@
+To,
+The Public Information Officer,
+{department_name},
+{department_address}
+
+APPLICATION UNDER SECTION 6 OF THE RIGHT TO INFORMATION ACT, 2005
+
+Subject: Request for information regarding {subject_matter}
+
+I, {complainant_name}, hereby request the following information under the RTI Act 2005:
+
+INFORMATION REQUESTED:
+{information_requested}
+
+Time period: {time_period}
+Relevant file/reference (if known): {reference_number}
+
+Application fee of Rs. 10/- is enclosed via {payment_mode}.
+
+If the information requested is held by another public authority, please transfer this
+application under Section 6(3) of the RTI Act.
+
+Date: {filing_date}
+Name: {complainant_name}
+Address: {complainant_address}
+Contact: {complainant_contact}

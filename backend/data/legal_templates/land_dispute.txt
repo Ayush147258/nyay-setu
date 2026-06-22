@@ -1,0 +1,40 @@
+To,
+The Civil Judge (Junior Division) / Revenue Court,
+{district}, {state}
+
+SUBJECT: Application regarding illegal encroachment / land dispute
+
+Respected Sir/Madam,
+
+I, {complainant_name}, resident of {complainant_address}, am the rightful owner / occupant
+of the land described below, and hereby submit this application.
+
+PROPERTY DETAILS:
+- Khasra/Survey No.: {khasra_number}
+- Khatauni No.: {khatauni_number}
+- Area: {land_area}
+- Location: Village {village}, Tehsil {tehsil}, District {district}
+- Title basis: {title_basis}
+
+FACTS:
+{dispute_description}
+
+The encroachment / illegal occupation began on {incident_date} by {accused_name},
+resident of {accused_address}.
+
+APPLICABLE LAW:
+- Section 441 IPC (criminal trespass)
+- Transfer of Property Act 1882
+- Specific Relief Act 1963
+
+PRAYER:
+1. Immediate removal of encroachment by {accused_name}
+2. Restoration of possession to the rightful owner
+3. Injunction against further interference
+
+DOCUMENTS ENCLOSED: {enclosed_documents}
+
+Date: {filing_date}
+
+{complainant_name}
+Contact: {complainant_contact}

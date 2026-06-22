@@ -1,0 +1,34 @@
+TO,
+The Judicial Magistrate First Class,
+{district} District Court
+
+SUBJECT: Application under Section 156(3) CrPC for directing registration of FIR
+
+Respected Sir/Madam,
+
+I, {complainant_name}, resident of {complainant_address}, respectfully submit this application
+under Section 156(3) of the Code of Criminal Procedure, 1973.
+
+FACTS OF THE CASE:
+On {incident_date}, the following incident occurred: {incident_description}
+
+POLICE INACTION:
+I approached {police_station} Police Station on {complaint_date} to register an FIR regarding
+the above incident. However, the Station House Officer refused to register my complaint without
+providing any valid reason, thereby violating their mandatory duty under Section 154 CrPC.
+
+LEGAL PROVISIONS VIOLATED:
+- Section 154 CrPC (mandatory registration of cognizable offences)
+- Section 166A IPC (failure of public servant to record FIR is a criminal offence)
+
+PRAYER:
+This Hon'ble Court is respectfully requested to:
+1. Direct {police_station} Police Station to register the FIR immediately under Section 156(3) CrPC
+2. Take necessary action against the delinquent officer under Section 166A IPC
+
+Date: {filing_date}
+Place: {district}
+
+Respectfully yours,
+{complainant_name}
+{complainant_contact}

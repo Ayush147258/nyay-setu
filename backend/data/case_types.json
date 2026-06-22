@@ -1,0 +1,155 @@
+{
+  "fir_refusal": {
+    "display_name": "Police FIR Refusal",
+    "display_name_hi": "पुलिस FIR दर्ज न करना",
+    "applicable_sections": ["CrPC 154", "CrPC 156(3)", "IPC 166A"],
+    "authority": "Judicial Magistrate First Class",
+    "filing_portal": "https://districts.ecourts.gov.in",
+    "scheme_name": "",
+    "required_documents": [
+      "Written complaint to Police Station",
+      "Witness names and addresses",
+      "Evidence of crime (photos/messages if available)",
+      "Proof of identity (Aadhaar)"
+    ],
+    "template_file": "fir_refusal.txt",
+    "keywords_en": ["fir", "police", "refused", "register", "complaint", "station", "officer", "did not file", "fir nahi", "not registered"],
+    "keywords_hi": ["एफआईआर", "पुलिस", "रजिस्टर", "शिकायत", "दर्ज", "थाना", "नहीं किया", "दर्ज नहीं"]
+  },
+  "crop_insurance": {
+    "display_name": "Crop Insurance Claim Rejection (PMFBY)",
+    "display_name_hi": "फसल बीमा दावा अस्वीकार (PMFBY)",
+    "applicable_sections": ["PMFBY Guidelines 2016", "IRDAI Circular 2022"],
+    "authority": "District Collector / Grievance Portal",
+    "filing_portal": "https://pmfby.gov.in",
+    "scheme_name": "PMFBY",
+    "required_documents": [
+      "Bank passbook / Kisan Credit Card",
+      "Land record (Khasra/Khatauni)",
+      "Insurance policy number",
+      "Crop loss evidence (photos with date)",
+      "Rejection letter from insurance company"
+    ],
+    "template_file": "pmfby_grievance.txt",
+    "keywords_en": ["crop", "insurance", "pmfby", "farmer", "harvest", "kisan", "rejected", "claim", "fasal", "fasal bima", "crop loss"],
+    "keywords_hi": ["फसल", "बीमा", "पीएमएफबीवाई", "किसान", "दावा", "अस्वीकार", "मुआवजा", "फसल बीमा"]
+  },
+  "flood_relief": {
+    "display_name": "Flood / Disaster Relief (SDRF)",
+    "display_name_hi": "बाढ़ / आपदा राहत (SDRF)",
+    "applicable_sections": ["SDRF Guidelines 2015", "NDMA Guidelines"],
+    "authority": "District Collector / DM Office",
+    "filing_portal": "https://ndma.gov.in",
+    "scheme_name": "SDRF",
+    "required_documents": [
+      "Aadhaar card",
+      "Bank account details",
+      "Proof of damage (photos)",
+      "Revenue record / land document",
+      "Tehsildar certificate of damage"
+    ],
+    "template_file": "sdrf_application.txt",
+    "keywords_en": ["flood", "disaster", "relief", "sdrf", "ndrf", "damage", "house", "compensation", "water", "baadh", "inundated"],
+    "keywords_hi": ["बाढ़", "आपदा", "राहत", "एसडीआरएफ", "मुआवजा", "नुकसान", "घर", "पानी", "तबाही"]
+  },
+  "wage_theft": {
+    "display_name": "Wage Theft / Unpaid Salary",
+    "display_name_hi": "वेतन चोरी / तनख्वाह नहीं मिली",
+    "applicable_sections": ["Payment of Wages Act 1936", "Labour Code 2020", "IPC 403"],
+    "authority": "Labour Commissioner Office",
+    "filing_portal": "https://shramsuvidha.gov.in",
+    "scheme_name": "",
+    "required_documents": [
+      "Employment contract / appointment letter",
+      "Salary slips (if available)",
+      "Bank statement showing last payment",
+      "Proof of work (attendance, messages)"
+    ],
+    "template_file": "labour_complaint.txt",
+    "keywords_en": ["salary", "wage", "unpaid", "employer", "work", "payment", "money", "labour", "job", "nahi diya", "dues"],
+    "keywords_hi": ["तनख्वाह", "वेतन", "नहीं दिया", "मालिक", "काम", "पैसा", "मजदूरी", "बकाया"]
+  },
+  "rti_request": {
+    "display_name": "RTI Request",
+    "display_name_hi": "सूचना का अधिकार (RTI)",
+    "applicable_sections": ["Right to Information Act 2005 Section 6", "Section 7"],
+    "authority": "Public Information Officer (PIO)",
+    "filing_portal": "https://rtionline.gov.in",
+    "scheme_name": "RTI Act 2005",
+    "required_documents": [
+      "Aadhaar / identity proof",
+      "Rs 10 application fee (court fee stamp or IPO)"
+    ],
+    "template_file": "rti_request.txt",
+    "keywords_en": ["rti", "information", "government", "document", "right to information", "public", "record", "apply rti"],
+    "keywords_hi": ["आरटीआई", "सूचना", "जानकारी", "दस्तावेज", "सरकार", "सार्वजनिक", "अधिकार"]
+  },
+  "consumer_complaint": {
+    "display_name": "Consumer Complaint",
+    "display_name_hi": "उपभोक्ता शिकायत",
+    "applicable_sections": ["Consumer Protection Act 2019", "Section 35", "Section 47"],
+    "authority": "District Consumer Disputes Redressal Commission",
+    "filing_portal": "https://edaakhil.nic.in",
+    "scheme_name": "",
+    "required_documents": [
+      "Purchase receipt / invoice",
+      "Product / service details",
+      "Evidence of defect or deficiency",
+      "Legal notice sent to seller (if any)"
+    ],
+    "template_file": "consumer_complaint.txt",
+    "keywords_en": ["consumer", "product", "defective", "refund", "service", "fraud", "company", "purchased", "cheated", "e-commerce"],
+    "keywords_hi": ["उपभोक्ता", "सामान", "खराब", "वापसी", "सेवा", "धोखा", "खरीदा", "रिफंड"]
+  },
+  "land_dispute": {
+    "display_name": "Land / Property Dispute",
+    "display_name_hi": "जमीन / संपत्ति विवाद",
+    "applicable_sections": ["Transfer of Property Act 1882", "Specific Relief Act 1963", "IPC 441"],
+    "authority": "Civil Court / Revenue Court",
+    "filing_portal": "https://districts.ecourts.gov.in",
+    "scheme_name": "",
+    "required_documents": [
+      "Land records (Khasra, Khatauni, Jamabandi)",
+      "Sale deed / title documents",
+      "Proof of possession",
+      "Survey map"
+    ],
+    "template_file": "land_dispute.txt",
+    "keywords_en": ["land", "property", "encroachment", "zameen", "plot", "boundary", "illegal occupation", "khasra", "deed"],
+    "keywords_hi": ["जमीन", "संपत्ति", "अतिक्रमण", "ज़मीन", "कब्जा", "बाउंड्री", "खसरा", "मालिकाना"]
+  },
+  "domestic_violence": {
+    "display_name": "Domestic Violence",
+    "display_name_hi": "घरेलू हिंसा",
+    "applicable_sections": ["Protection of Women from Domestic Violence Act 2005", "IPC 498A", "IPC 406"],
+    "authority": "Protection Officer / Magistrate",
+    "filing_portal": "https://wcd.nic.in",
+    "scheme_name": "PWDVA 2005",
+    "required_documents": [
+      "Domestic Incident Report (DIR)",
+      "Medical certificates (if injured)",
+      "Witnesses (neighbours, family)",
+      "Evidence of abuse (photos, messages)"
+    ],
+    "template_file": "domestic_violence.txt",
+    "keywords_en": ["domestic violence", "husband", "wife", "abuse", "beating", "dowry", "harassment", "498a", "shelter"],
+    "keywords_hi": ["घरेलू हिंसा", "पति", "पत्नी", "मारपीट", "दहेज", "उत्पीड़न", "प्रताड़ना", "शरण"]
+  },
+  "labour_complaint": {
+    "display_name": "Labour Rights Violation",
+    "display_name_hi": "श्रम अधिकार उल्लंघन",
+    "applicable_sections": ["Labour Code 2020", "Factories Act 1948", "Minimum Wages Act 1948"],
+    "authority": "Labour Commissioner / Industrial Tribunal",
+    "filing_portal": "https://shramsuvidha.gov.in",
+    "scheme_name": "",
+    "required_documents": [
+      "Employment ID / appointment letter",
+      "Pay slips",
+      "Evidence of violation (messages, photos)",
+      "Witness statements"
+    ],
+    "template_file": "labour_complaint.txt",
+    "keywords_en": ["labour", "worker", "factory", "overtime", "minimum wage", "fired", "dismissed", "termination", "unsafe"],
+    "keywords_hi": ["मजदूर", "श्रमिक", "कारखाना", "ओवरटाइम", "न्यूनतम वेतन", "बर्खास्त", "छंटनी", "असुरक्षित"]
+  }
+}

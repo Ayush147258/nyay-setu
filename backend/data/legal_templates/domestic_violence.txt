@@ -1,0 +1,39 @@
+To,
+The Protection Officer / Judicial Magistrate First Class,
+{district}, {state}
+
+APPLICATION UNDER SECTION 12 OF THE PROTECTION OF WOMEN FROM
+DOMESTIC VIOLENCE ACT, 2005
+
+Applicant:
+{complainant_name}
+{complainant_address}
+Contact: {complainant_contact}
+
+Respondent:
+{respondent_name}
+{respondent_address}
+Relationship: {relationship}
+
+FACTS OF DOMESTIC VIOLENCE:
+{incident_description}
+
+The acts of domestic violence include:
+- Physical abuse: {physical_abuse_details}
+- Emotional / verbal abuse: {emotional_abuse_details}
+- Economic abuse (denial of maintenance / resources): {economic_abuse_details}
+
+The incidents have been occurring since {start_date}. The most recent incident was on {incident_date}.
+
+RELIEF SOUGHT:
+1. Protection Order under Section 18 PWDVA 2005
+2. Residence Order under Section 19 PWDVA 2005
+3. Monetary Relief under Section 20 PWDVA 2005: Rs. {monetary_relief}
+4. Custody Order (if applicable): {custody_details}
+
+DOCUMENTS / EVIDENCE: {enclosed_documents}
+
+Date: {filing_date}
+
+{complainant_name}
+(Applicant)

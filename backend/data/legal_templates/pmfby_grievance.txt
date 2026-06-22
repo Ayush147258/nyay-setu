@@ -1,0 +1,35 @@
+TO,
+The District Collector / CEO Zila Panchayat,
+{district}, {state}
+
+SUBJECT: Grievance regarding rejection of crop insurance claim under PMFBY
+Scheme Year: {scheme_year} | Policy Number: {policy_number}
+
+Respected Sir/Madam,
+
+I, {complainant_name}, a farmer from {village}, {district}, am writing to appeal the rejection
+of my crop insurance claim under the Pradhan Mantri Fasal Bima Yojana (PMFBY).
+
+DETAILS:
+- Crop Name: {crop_name}
+- Khasra/Survey No.: {land_record_number}
+- Insured Area: {land_area} Hectares
+- Premium Paid: Rs. {premium_amount}
+- Insurance Company: {insurance_company}
+- Rejection Date: {rejection_date}
+- Reason Given: {rejection_reason}
+
+GROUNDS FOR APPEAL:
+The rejection is contrary to PMFBY Guidelines 2016 because: {grounds_for_appeal}
+
+I am enclosing: {enclosed_documents}
+
+PRAYER: Direct the insurance company to process my legitimate claim within 30 days as
+mandated by PMFBY Guidelines.
+
+Date: {filing_date}
+
+Yours faithfully,
+{complainant_name}
+Aadhaar: {aadhaar_last4}
+Contact: {complainant_contact}

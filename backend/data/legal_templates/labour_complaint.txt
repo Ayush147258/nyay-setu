@@ -1,0 +1,29 @@
+To,
+The Labour Commissioner,
+{district}, {state}
+
+COMPLAINT UNDER THE PAYMENT OF WAGES ACT 1936 AND LABOUR CODE 2020
+
+Subject: Non-payment of wages by {employer_name}
+
+Respected Sir,
+
+I, {complainant_name}, was employed as {designation} at {employer_name}, {employer_address}
+from {employment_start} to {employment_end}.
+
+DETAILS OF NON-PAYMENT:
+- Amount owed: Rs. {amount_owed}
+- For the period: {unpaid_period}
+- Last date wages were paid: {last_payment_date}
+- Reason given by employer: {employer_reason}
+
+This constitutes violation of Section 3 of the Payment of Wages Act 1936.
+
+I request you to take necessary legal action and direct the employer to pay the outstanding
+wages with compensation under Section 20 of the Act.
+
+Enclosed: {enclosed_documents}
+
+Date: {filing_date}
+{complainant_name}
+Contact: {complainant_contact}
