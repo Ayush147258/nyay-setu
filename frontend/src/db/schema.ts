@@ -24,6 +24,7 @@ export const documentTypeEnum = pgEnum("document_type", [
 
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+  tenantId: varchar("tenant_id", { length: 128 }).notNull().default("default"),
   email: varchar("email", { length: 255 }).notNull().unique(),
   name: varchar("name", { length: 255 }),
   avatarUrl: varchar("avatar_url", { length: 512 }),
@@ -36,6 +37,7 @@ export const users = pgTable("users", {
 
 export const cases = pgTable("cases", {
   id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+  tenantId: varchar("tenant_id", { length: 128 }).notNull().default("default"),
   userId: uuid("user_id").references(() => users.id, { onDelete: "cascade" }),
   caseType: varchar("case_type", { length: 100 }).notNull().default("other"),
   rawInput: text("raw_input"),

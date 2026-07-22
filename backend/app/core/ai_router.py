@@ -38,6 +38,35 @@ _groq_client: AsyncGroq | None = None
 _anthropic_client: AsyncAnthropic | None = None
 _http_client: httpx.AsyncClient | None = None
 
+def _configured_secret(value: str) -> bool:
+    cleaned = (value or "").strip()
+    lowered = cleaned.casefold()
+    blocked_markers = ("your_", "placeholder", "changeme", "change_me", "dummy", "example", "not-set")
+    return bool(cleaned) and not any(marker in lowered for marker in blocked_markers)
+
+
+def _provider_error_summary(exc: Exception) -> str:
+    if isinstance(exc, httpx.HTTPStatusError):
+        status_code = exc.response.status_code
+        provider_status = ""
+        message = ""
+        try:
+            error = exc.response.json().get("error", {})
+            provider_status = str(error.get("status") or "")
+            message = str(error.get("message") or "")
+        except Exception:
+            message = exc.response.text
+        compact = re.sub(r"\s+", " ", message).strip()
+        if provider_status == "RESOURCE_EXHAUSTED" or "quota" in compact.casefold():
+            compact = "quota exceeded"
+        elif compact:
+            compact = compact[:220]
+        suffix = f" {provider_status}" if provider_status else ""
+        detail = f": {compact}" if compact else ""
+        return f"HTTP {status_code}{suffix}{detail}"
+    message = re.sub(r"\s+", " ", str(exc)).strip()
+    detail = f": {message[:220]}" if message else ""
+    return f"{type(exc).__name__}{detail}"
 
 def _groq() -> AsyncGroq:
     global _groq_client
@@ -127,7 +156,7 @@ async def call_gemini(
     if settings.use_google_cloud:
         return await call_vertex_gemini(prompt, system, max_tokens)
 
-    if not settings.gemini_api_key:
+    if not _configured_secret(settings.gemini_api_key):
         raise ValueError("GEMINI_API_KEY not configured")
 
     body = {
@@ -196,7 +225,7 @@ async def call_groq(
     Free tier: 30 RPM, 6000 TPM.
     Raises on any API error.
     """
-    if not settings.groq_api_key:
+    if not _configured_secret(settings.groq_api_key):
         raise ValueError("GROQ_API_KEY not configured")
 
     completion = await _groq().chat.completions.create(
@@ -229,7 +258,7 @@ async def call_claude(
     Used only for premium users (Tier 4).
     Raises on any API error.
     """
-    if not settings.anthropic_api_key:
+    if not _configured_secret(settings.anthropic_api_key):
         raise ValueError("ANTHROPIC_API_KEY not configured")
 
     message = await _anthropic().messages.create(
@@ -277,7 +306,7 @@ async def call_with_fallback(
             ("groq",   lambda: call_groq(prompt, system, max_tokens)),
         ]
 
-    last_exc: Exception | None = None
+    provider_errors: list[str] = []
     for provider_name, call_fn in providers:
         t0 = time.perf_counter()
         try:
@@ -292,17 +321,19 @@ async def call_with_fallback(
             return response, provider_name
         except Exception as exc:
             latency_ms = int((time.perf_counter() - t0) * 1000)
+            error_summary = _provider_error_summary(exc)
+            provider_errors.append(f"{provider_name}: {error_summary}")
             logger.warning(
                 "[ai_router] FAIL | provider=%s latency=%dms err=%s",
                 provider_name,
                 latency_ms,
-                type(exc).__name__,   # no API keys in logs
+                error_summary,
             )
-            last_exc = exc
             continue
 
+    joined_errors = "; ".join(provider_errors) or "no providers attempted"
     raise RuntimeError(
-        f"All AI providers failed (preferred={preferred}). Last error: {last_exc}"
+        f"All AI providers failed (preferred={preferred}). Errors: {joined_errors}"
     )
 
 

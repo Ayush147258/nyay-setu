@@ -100,7 +100,9 @@ async def search_indiankanoon(case_type: str, summary: str) -> list[dict]:
                     "citation": doc.get("docsource", ""),
                     "court": "Indian Courts",  # API doesn't always split cleanly
                     "year": "",
-                    "excerpt": excerpt_clean
+                    "excerpt": excerpt_clean,
+                    "source_url": f"https://indiankanoon.org/doc/{doc['tid']}/"
+                    if doc.get("tid") else "",
                 })
             
             logger.info(f"[indiankanoon] Retrieved {len(results)} results from API.")

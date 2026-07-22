@@ -14,8 +14,6 @@ from fastapi.responses import StreamingResponse, FileResponse
 import tempfile
 import os
 
-from weasyprint import HTML
-
 from app.core.graph import run_case
 from app.core.pubsub import get_queue
 
@@ -135,6 +133,7 @@ async def generate_pdf(case_id: str):
     pdf_path = os.path.join(temp_dir, f"{case_id}_petition.pdf")
     
     try:
+        from weasyprint import HTML
         HTML(string=html_content).write_pdf(pdf_path)
     except Exception as e:
         logger.error(f"[api] WeasyPrint failed: {e}")

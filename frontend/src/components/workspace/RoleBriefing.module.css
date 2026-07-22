@@ -1,0 +1,37 @@
+.briefing { overflow: hidden; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.briefHeader { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px 19px; border-bottom: 1px solid var(--border-soft); background: #faf8f3; }
+.briefHeader > div:first-child > span { color: var(--tape); font-family: var(--font-mono); font-size: 9px; font-weight: 700; text-transform: uppercase; }
+.briefHeader h2 { margin: 3px 0 2px; font-family: var(--font-display); font-size: 20px; }
+.briefHeader p { margin: 0; color: var(--ink-soft); font-size: 11.5px; }
+.readiness, .caseStatus { min-width: 92px; display: flex; flex-direction: column; align-items: flex-end; }
+.readiness strong { font-family: var(--font-mono); font-size: 27px; color: var(--green); }
+.readiness span, .caseStatus span { color: var(--ink-faint); font-size: 9px; text-transform: uppercase; }
+.caseStatus strong { color: var(--indigo); font-size: 12px; text-transform: uppercase; }
+.lawyerGrid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .8fr) minmax(245px, .65fr); }
+.lawyerGrid > article, .citizenGrid > article { min-width: 0; padding: 16px 18px; border-right: 1px solid var(--border-soft); }
+.lawyerGrid > article:last-child, .citizenGrid > article:last-child { border-right: 0; }
+.panelTitle { display: flex; gap: 9px; align-items: flex-start; }
+.panelTitle > svg { margin-top: 1px; color: var(--tape); flex: none; }
+.panelTitle h3 { margin: 0; font-size: 13px; }
+.panelTitle p { margin: 2px 0 0; color: var(--ink-faint); font-size: 10.5px; line-height: 1.4; }
+.challenge { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 9px; padding: 11px 0; border-bottom: 1px solid var(--border-soft); }
+.challenge > span { align-self: start; border-radius: 12px; padding: 3px 6px; background: var(--brass-tint); color: #846321; font-family: var(--font-mono); font-size: 8px; font-weight: 700; text-align: center; text-transform: uppercase; }
+.challenge > span.blocking { background: #fff1ef; color: #9d2f25; }
+.challenge strong { display: block; font-size: 11.5px; }
+.challenge p { margin: 2px 0; color: var(--ink-soft); font-size: 10.5px; line-height: 1.45; }
+.challenge small { color: var(--tape); font-size: 9.5px; }
+.clear { min-height: 92px; display: flex; align-items: center; gap: 7px; color: var(--green); font-size: 11px; }
+.questionPanel ol, .citizenQuestions { margin: 12px 0 0; padding-left: 21px; }
+.questionPanel li, .citizenQuestions li { padding: 0 0 9px 4px; color: var(--ink); font-family: Georgia, serif; font-size: 11.5px; line-height: 1.45; }
+.responsePanel ul, .delayList { display: grid; gap: 9px; margin: 13px 0 0; padding: 0; list-style: none; }
+.responsePanel li { display: flex; align-items: flex-start; gap: 6px; color: var(--ink-soft); font-size: 10.5px; line-height: 1.4; }
+.responsePanel li svg { margin-top: 1px; color: var(--green); flex: none; }
+.briefing article > button { margin-top: 11px; display: inline-flex; align-items: center; gap: 5px; color: var(--tape); font-size: 10.5px; font-weight: 700; }
+.citizenGrid { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr); }
+.delayList li { position: relative; padding-left: 14px; color: var(--ink-soft); font-size: 11.5px; line-height: 1.5; }
+.delayList li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--brass); }
+.citizenQuestions { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+.safety { margin: 0; padding: 9px 18px; border-top: 1px solid var(--border-soft); background: #faf8f3; color: var(--ink-faint); font-size: 9.5px; line-height: 1.45; }
+
+@media (max-width: 1180px) { .lawyerGrid { grid-template-columns: 1fr 1fr; } .responsePanel { grid-column: 1 / -1; border-top: 1px solid var(--border-soft); } }
+@media (max-width: 760px) { .briefHeader { align-items: flex-start; } .lawyerGrid, .citizenGrid { grid-template-columns: 1fr; } .lawyerGrid > article, .citizenGrid > article { border-right: 0; border-bottom: 1px solid var(--border-soft); } .lawyerGrid > article:last-child, .citizenGrid > article:last-child { border-bottom: 0; } .responsePanel { grid-column: auto; } .citizenQuestions { grid-template-columns: 1fr; } }

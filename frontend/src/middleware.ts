@@ -2,6 +2,7 @@ import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 
 const PUBLIC_PATHS = new Set(["/", "/login", "/signup", "/sign-in", "/sign-up", "/analyze", "/upload", "/demo"])
+const PROTECTED_PREFIXES = ["/dashboard", "/cases", "/new-case", "/documents", "/lawyer", "/judge", "/citizen"]
 
 export default auth((request) => {
   const { pathname } = request.nextUrl
@@ -13,13 +14,8 @@ export default auth((request) => {
 
   if (isPublic) return NextResponse.next()
 
-  if (
-    (pathname.startsWith("/dashboard") ||
-      pathname.startsWith("/cases") ||
-      pathname.startsWith("/new-case") ||
-      pathname.startsWith("/documents")) &&
-    !request.auth
-  ) {
+  const isProtected = PROTECTED_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`))
+  if (isProtected && !request.auth) {
     const loginUrl = new URL("/login", request.nextUrl)
     loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname)
     return NextResponse.redirect(loginUrl)
@@ -29,5 +25,16 @@ export default auth((request) => {
 })
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/cases/:path*", "/new-case/:path*", "/documents/:path*", "/api/cases/:path*", "/api/upload/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/cases/:path*",
+    "/new-case/:path*",
+    "/documents/:path*",
+    "/lawyer/:path*",
+    "/judge/:path*",
+    "/citizen/:path*",
+    "/api/cases/:path*",
+    "/api/upload/:path*",
+  ],
 }
+

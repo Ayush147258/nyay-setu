@@ -3,5 +3,5 @@
 import { signIn } from "@/lib/auth";
 
 export async function signInWithGoogle() {
-  await signIn("google", { redirectTo: "/dashboard" });
+  await signIn("google", { redirectTo: "/choose-role" });
 }

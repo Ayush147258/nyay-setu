@@ -58,7 +58,7 @@ def make_state(round_number: int = 0, objections: list[str] = None, elapsed: flo
         current_draft="Draft document text with CrPC 156(3) content.",
         debate_rounds=[],
         round_number=round_number,
-        objections=objections or ["Missing address"],
+        objections=objections if objections is not None else ["Missing address"],
         final_document=None,
         start_time=time.time() - elapsed,
         tier="free",
@@ -135,7 +135,11 @@ async def _clean_draft_router(prompt: str, preferred: str) -> tuple[str, str]:
     import json
     if "strict government official" in prompt or "find reasons to REJECT" in prompt:
         return "[]", "mock"
-    return "Clean improved document text with CrPC sections.", "mock"
+    return (
+        "Clean improved legal application containing Section 154 CrPC, the "
+        "complainant details, jurisdiction, requested relief, and supporting context.",
+        "mock",
+    )
 
 
 @pytest.mark.asyncio

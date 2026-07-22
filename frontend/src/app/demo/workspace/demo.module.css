@@ -1,0 +1,9 @@
+.page { min-height: 100vh; padding: 24px 32px 36px; background: var(--bg); }
+.roleBar { max-width: 720px; margin: 0 auto 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 12px 10px 15px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.roleBar > div:first-child strong, .roleBar > div:first-child span { display: block; }
+.roleBar > div:first-child strong { font-size: 12px; }
+.roleBar > div:first-child span { margin-top: 2px; color: var(--ink-faint); font-size: 10px; }
+.segments { display: flex; gap: 3px; padding: 3px; border-radius: 7px; background: var(--bg); }
+.segments button { min-height: 32px; padding: 6px 10px; border-radius: 5px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+.segments button.active { background: var(--surface); color: var(--tape); box-shadow: 0 1px 3px rgba(27, 42, 56, .12); }
+@media (max-width: 680px) { .page { padding: 16px 12px 28px; } .roleBar { align-items: stretch; flex-direction: column; } .segments button { flex: 1; } }

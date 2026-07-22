@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useMemo, useState } from "react"
 import AgentBubble, { type ArenaAgent, type ArenaMessage } from "@/components/arena/AgentBubble"
 import AgentPanel, { type AgentStatus } from "@/components/arena/AgentPanel"
@@ -87,9 +88,14 @@ export default function AgentArena({
             <div className="ct">Agent Arena</div>
             <div className="cs">{legalCase.title}</div>
           </div>
-          <span className={`pill ${complete ? "pill-green" : "pill-amber"}`}>
-            {complete ? "✓ Debate Complete" : "⚡ Live Debate in Progress"}
-          </span>
+          <div className="flex items-center gap-2">
+            <Link href={`/cases/${legalCase.id}/workspace`} className="tbtn">
+              Document workspace
+            </Link>
+            <span className={`pill ${complete ? "pill-green" : "pill-amber"}`}>
+              {complete ? "Debate complete" : "Live debate in progress"}
+            </span>
+          </div>
         </div>
         <div className="arena-feed">
           <div className="system-message">-- Debate Round {round} Started --</div>

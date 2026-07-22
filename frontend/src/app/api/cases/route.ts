@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { and, desc, eq } from "drizzle-orm"
 import { z } from "zod"
 import { auth } from "@/lib/auth"
@@ -19,20 +19,25 @@ const createCaseSchema = z.object({
   aiSummary: z.string().trim().max(10_000).optional(),
 })
 
-function getSessionUserId(session: { user?: { id?: string } } | null) {
-  return session?.user ? (session.user as typeof session.user & { id?: string }).id || null : null
+function getSessionIdentity(session: { user?: { id?: string } } | null) {
+  if (!session?.user) return null
+  const user = session.user as typeof session.user & {
+    id?: string
+    tenantId?: string
+  }
+  return user.id ? { userId: user.id, tenantId: user.tenantId ?? "default" } : null
 }
 
 export async function GET() {
   try {
     const session = await auth()
-    const userId = getSessionUserId(session)
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    const identity = getSessionIdentity(session)
+    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
     const rows = await getDb()
       .select()
       .from(cases)
-      .where(eq(cases.userId, userId))
+      .where(and(eq(cases.userId, identity.userId), eq(cases.tenantId, identity.tenantId)))
       .orderBy(desc(cases.updatedAt))
       .limit(50)
 
@@ -46,8 +51,8 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const session = await auth()
-    const userId = getSessionUserId(session)
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    const identity = getSessionIdentity(session)
+    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
     const parsed = createCaseSchema.safeParse(await request.json().catch(() => null))
     if (!parsed.success) {
@@ -61,7 +66,8 @@ export async function POST(request: Request) {
     const [createdCase] = await db
       .insert(cases)
       .values({
-        userId,
+        userId: identity.userId,
+        tenantId: identity.tenantId,
         title: parsed.data.title,
         description: parsed.data.description ?? complaint,
         rawInput: complaint,
@@ -77,7 +83,7 @@ export async function POST(request: Request) {
       .returning()
 
     await db.insert(activityLog).values({
-      userId,
+      userId: identity.userId,
       caseId: createdCase.id,
       action: "case_created",
       metadata: { title: createdCase.title, caseType: createdCase.caseType },
@@ -101,7 +107,7 @@ export async function POST(request: Request) {
     const verifiedRows = await db
       .select()
       .from(cases)
-      .where(and(eq(cases.id, createdCase.id), eq(cases.userId, userId)))
+      .where(and(eq(cases.id, createdCase.id), eq(cases.userId, identity.userId), eq(cases.tenantId, identity.tenantId)))
       .limit(1)
 
     return NextResponse.json({ case: verifiedRows[0], agentRun }, { status: 201 })

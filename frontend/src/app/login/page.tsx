@@ -4,9 +4,19 @@ import { auth } from "@/lib/auth"
 import LoginForm from "@/components/auth/LoginForm"
 import AuthSkeleton from "@/components/auth/AuthSkeleton"
 
-export default async function LoginPage() {
+type LoginPageProps = {
+  searchParams?: Promise<{ callbackUrl?: string }>
+}
+
+function safeCallbackUrl(value?: string) {
+  if (value && value.startsWith("/") && !value.startsWith("//")) return value
+  return "/choose-role"
+}
+
+export default async function LoginPage({ searchParams }: LoginPageProps) {
   const session = await auth()
-  if (session?.user) redirect("/dashboard")
+  const params = await searchParams
+  if (session?.user) redirect(safeCallbackUrl(params?.callbackUrl))
 
   return (
     <main className="auth-full-page">
@@ -16,3 +26,4 @@ export default async function LoginPage() {
     </main>
   )
 }
+

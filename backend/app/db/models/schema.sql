@@ -3,6 +3,7 @@
 
 CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id VARCHAR(128) NOT NULL DEFAULT 'default',
     email VARCHAR(255) UNIQUE NOT NULL,
     name VARCHAR(255),
     avatar_url VARCHAR(512),
@@ -13,8 +14,12 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+CREATE UNIQUE INDEX IF NOT EXISTS uq_users_tenant_id
+    ON users(tenant_id, id);
+
 CREATE TABLE IF NOT EXISTS cases (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tenant_id VARCHAR(128) NOT NULL DEFAULT 'default',
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     case_type VARCHAR(100) NOT NULL DEFAULT 'other',
     raw_input TEXT,
@@ -28,8 +33,13 @@ CREATE TABLE IF NOT EXISTS cases (
     state VARCHAR(100),
     debate_round INT DEFAULT 0,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    FOREIGN KEY (tenant_id, user_id)
+        REFERENCES users(tenant_id, id) ON DELETE CASCADE
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS uq_cases_tenant_id
+    ON cases(tenant_id, id);
 
 CREATE TABLE IF NOT EXISTS agent_runs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

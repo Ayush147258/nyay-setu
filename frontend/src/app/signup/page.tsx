@@ -6,7 +6,7 @@ import AuthSkeleton from "@/components/auth/AuthSkeleton"
 
 export default async function SignupPage() {
   const session = await auth()
-  if (session?.user) redirect("/dashboard")
+  if (session?.user) redirect("/choose-role")
 
   return (
     <main className="auth-full-page">

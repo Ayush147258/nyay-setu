@@ -3,7 +3,7 @@ The Public Information Officer,
 {department_name},
 {department_address}
 
-APPLICATION UNDER SECTION 6 OF THE RIGHT TO INFORMATION ACT, 2005
+Application under Section 6 of the Right to Information Act, 2005
 
 Subject: Request for information regarding {subject_matter}
 

@@ -1,0 +1,693 @@
+{
+  "version": "1.0",
+  "description": "Synthetic NyaySetu extraction golden corpus",
+  "document_count": 40,
+  "documents": [
+    {
+      "id": "scanned-fir-01",
+      "filename": "scanned-fir-01.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-02",
+      "filename": "scanned-fir-02.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-03",
+      "filename": "scanned-fir-03.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-04",
+      "filename": "scanned-fir-04.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-05",
+      "filename": "scanned-fir-05.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-06",
+      "filename": "scanned-fir-06.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-07",
+      "filename": "scanned-fir-07.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "scanned-fir-08",
+      "filename": "scanned-fir-08.pdf",
+      "category": "scanned_fir",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-01",
+      "filename": "judgment-01.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-02",
+      "filename": "judgment-02.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-03",
+      "filename": "judgment-03.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-04",
+      "filename": "judgment-04.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-05",
+      "filename": "judgment-05.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-06",
+      "filename": "judgment-06.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-07",
+      "filename": "judgment-07.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "judgment-08",
+      "filename": "judgment-08.pdf",
+      "category": "judgment",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-form-01",
+      "filename": "legal-form-01.pdf",
+      "category": "form",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Applicant",
+        "Case Number"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-form-02",
+      "filename": "legal-form-02.pdf",
+      "category": "form",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Applicant",
+        "Case Number"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-form-03",
+      "filename": "legal-form-03.pdf",
+      "category": "form",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Applicant",
+        "Case Number"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-form-04",
+      "filename": "legal-form-04.pdf",
+      "category": "form",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Applicant",
+        "Case Number"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-form-05",
+      "filename": "legal-form-05.pdf",
+      "category": "form",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Applicant",
+        "Case Number"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "evidence-table-01",
+      "filename": "evidence-table-01.pdf",
+      "category": "table",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Provision",
+        "Finding"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "evidence-table-02",
+      "filename": "evidence-table-02.pdf",
+      "category": "table",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Provision",
+        "Finding"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "evidence-table-03",
+      "filename": "evidence-table-03.pdf",
+      "category": "table",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Provision",
+        "Finding"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "evidence-table-04",
+      "filename": "evidence-table-04.pdf",
+      "category": "table",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Provision",
+        "Finding"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "evidence-table-05",
+      "filename": "evidence-table-05.pdf",
+      "category": "table",
+      "format": "pdf",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Provision",
+        "Finding"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-01",
+      "filename": "mixed-hi-en-01.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-02",
+      "filename": "mixed-hi-en-02.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-03",
+      "filename": "mixed-hi-en-03.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-04",
+      "filename": "mixed-hi-en-04.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-05",
+      "filename": "mixed-hi-en-05.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "mixed-hi-en-06",
+      "filename": "mixed-hi-en-06.pdf",
+      "category": "mixed_language",
+      "format": "pdf",
+      "languages": [
+        "hin",
+        "eng"
+      ],
+      "expected_method": "digital+ocr",
+      "expected_fragments": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "min_pages": 2,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "legal-memo-01",
+      "filename": "legal-memo-01.docx",
+      "category": "docx",
+      "format": "docx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "legal-memo-02",
+      "filename": "legal-memo-02.docx",
+      "category": "docx",
+      "format": "docx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "legal-memo-03",
+      "filename": "legal-memo-03.docx",
+      "category": "docx",
+      "format": "docx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "case-register-01",
+      "filename": "case-register-01.xlsx",
+      "category": "spreadsheet",
+      "format": "xlsx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Case Number",
+        "Status"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "case-register-02",
+      "filename": "case-register-02.xlsx",
+      "category": "spreadsheet",
+      "format": "xlsx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Case Number",
+        "Status"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "case-register-03",
+      "filename": "case-register-03.xlsx",
+      "category": "spreadsheet",
+      "format": "xlsx",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "digital",
+      "expected_fragments": [
+        "Case Number",
+        "Status"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": true,
+      "synthetic": true
+    },
+    {
+      "id": "fir-image-01",
+      "filename": "fir-image-01.png",
+      "category": "scanned_fir",
+      "format": "image",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    },
+    {
+      "id": "fir-image-02",
+      "filename": "fir-image-02.png",
+      "category": "scanned_fir",
+      "format": "image",
+      "languages": [
+        "eng"
+      ],
+      "expected_method": "ocr",
+      "expected_fragments": [
+        "FIR",
+        "Section 154"
+      ],
+      "min_pages": 1,
+      "expects_structured_table": false,
+      "synthetic": true
+    }
+  ]
+}

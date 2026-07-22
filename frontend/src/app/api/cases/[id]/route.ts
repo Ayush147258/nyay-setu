@@ -17,21 +17,26 @@ const updateCaseSchema = z.object({
   petitionText: z.string().trim().max(50_000).optional(),
 })
 
-function sessionUserId(session: { user?: { id?: string } } | null) {
-  return session?.user ? (session.user as typeof session.user & { id?: string }).id : undefined
+function sessionIdentity(session: { user?: { id?: string } } | null) {
+  if (!session?.user) return null
+  const user = session.user as typeof session.user & {
+    id?: string
+    tenantId?: string
+  }
+  return user.id ? { userId: user.id, tenantId: user.tenantId ?? "default" } : null
 }
 
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await auth()
-    const userId = sessionUserId(session)
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    const identity = sessionIdentity(session)
+    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
     const { id } = await params
     const [row] = await getDb()
       .select()
       .from(cases)
-      .where(and(eq(cases.id, id), eq(cases.userId, userId)))
+      .where(and(eq(cases.id, id), eq(cases.userId, identity.userId), eq(cases.tenantId, identity.tenantId)))
       .limit(1)
 
     if (!row) return NextResponse.json({ error: "Case not found" }, { status: 404 })
@@ -45,8 +50,8 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const session = await auth()
-    const userId = sessionUserId(session)
-    if (!userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    const identity = sessionIdentity(session)
+    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
 
     const parsed = updateCaseSchema.safeParse(await request.json().catch(() => null))
     if (!parsed.success) {
@@ -57,7 +62,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     const [updated] = await getDb()
       .update(cases)
       .set({ ...parsed.data, updatedAt: new Date() })
-      .where(and(eq(cases.id, id), eq(cases.userId, userId)))
+      .where(and(eq(cases.id, id), eq(cases.userId, identity.userId), eq(cases.tenantId, identity.tenantId)))
       .returning()
 
     if (!updated) return NextResponse.json({ error: "Case not found" }, { status: 404 })

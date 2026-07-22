@@ -1,11 +1,13 @@
 # ---------- Python (backend) ----------
 venv/
+.venv/
 env/
 __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
 .pytest_cache/
+.pytest-tmp*/
 instance/
 
 # ---------- Node / Frontend ----------
@@ -32,3 +34,10 @@ Thumbs.db
 
 # ---------- Logs ----------
 *.log
+
+# ---------- Generated local artifacts ----------
+*.tsbuildinfo
+frontend/nyaysetu-lawyer-*.png
+frontend/reference-*.png
+backend/track_c_load_result.json
+backend/data/document-intelligence/

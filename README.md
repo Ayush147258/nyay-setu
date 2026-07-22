@@ -1,97 +1,142 @@
 # NyaySetu
 
-NyaySetu is India's Adversarial Agentic Justice Navigator. It is a full-stack application featuring a Next.js frontend with Google OAuth, Neon PostgreSQL via Drizzle ORM, Supabase private storage, and an SSE Agent Arena proxying a Python FastAPI + LangGraph backend.
+NyaySetu is an agentic legal-document workspace for Indian justice workflows. It combines a premium Next.js interface with a FastAPI backend that ingests uploaded case records, extracts source-grounded facts, synthesizes role-specific reports, and answers questions for citizens, lawyers, and judges.
 
-## Architecture Stack
+The project is built for Track C: Intelligent Document Synthesis and Analysis Agent. It includes an Extractor Agent, Synthesis Agent, Reviewer Agent, and role-specific final agents for lawyer, judge, and citizen panels.
 
-- **Frontend**: Next.js App Router, TypeScript, TailwindCSS, NextAuth v5
-- **Backend**: Python 3.11+, FastAPI, LangGraph, asyncpg, WeasyPrint
-- **Database**: Neon PostgreSQL (Drizzle ORM for frontend, asyncpg raw SQL for backend)
-- **Storage**: Supabase Storage (private buckets for documents, petitions, voice)
-- **AI/APIs**: Anthropic (Claude 3.5 Sonnet for agents), Sarvam AI (voice/translation), IndianKanoon (legal research), Twilio (SMS notifications)
+## What It Does
 
-## Running Locally
+- Upload PDFs, DOCX files, text files, spreadsheets, images, emails, and scans.
+- Store source documents as immutable document versions.
+- Extract evidence atoms with page/block provenance.
+- Synthesize reports from extracted evidence, relationships, timelines, caveats, and review items.
+- Run an integrity reviewer so claims stay tied to source spans.
+- Ask questions over all documents or scope a query to one document with `@document-name`.
+- Show the live pipeline on the frontend: document store, extractor, synthesis, reviewer, and final answer agent.
+- Serve different experiences for lawyer, judge, and citizen users.
 
-The easiest way to run both services together for local testing or demoing is via Docker Compose.
+## Architecture
+
+```mermaid
+flowchart LR
+  Upload[Document Upload] --> Store[Document Store]
+  Store --> Extractor[Extractor Agent]
+  Extractor --> Synthesis[Synthesis Agent]
+  Synthesis --> Reviewer[Reviewer Agent]
+  Reviewer --> RoleAgent{Role Final Agent}
+  RoleAgent --> Lawyer[Lawyer Panel]
+  RoleAgent --> Judge[Judge Panel]
+  RoleAgent --> Citizen[Citizen Panel]
+  Store --> Chat[Record Chat + @document Scope]
+  Reviewer --> Chat
+```
+
+## Tech Stack
+
+| Layer | Stack |
+| --- | --- |
+| Frontend | Next.js App Router, TypeScript, NextAuth, Drizzle, Neon, custom CSS modules |
+| Backend | FastAPI, Pydantic, asyncpg, LangGraph-oriented agents |
+| Document intelligence | pypdf, PyMuPDF, python-docx, openpyxl, pytesseract, provenance-aware IR |
+| AI providers | Gemini, Groq, Anthropic fallback router |
+| Database | Neon PostgreSQL |
+| Deployment | Vercel-compatible frontend, Docker backend for Hugging Face Spaces |
+
+## Repository Layout
+
+```text
+nyaysetu/
+  frontend/    Next.js app, auth, role panels, live pipeline UI
+  backend/     FastAPI API, document intelligence pipeline, Docker Space config
+  backend/app/document_intelligence/
+               ingestion, parsing, extraction, synthesis, integrity, chat, storage
+```
+
+## Local Setup
+
+### Backend
 
 ```bash
-# Start both frontend and backend
-docker-compose up --build
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
-- Frontend will be available at `http://localhost:3000`
-- Backend API will be available at `http://localhost:8000`
 
-### Seed Data
-To populate the database with realistic multilingual demo cases and mid-debate states:
+Backend health check:
+
 ```bash
-# Make sure your backend environment variables are set, then run:
-python backend/app/data/seed.py
+curl http://localhost:8000/api/health
 ```
 
-## Environment Variables
+### Frontend
 
-Both the frontend and backend require environment files to function. 
-Copy `.env.example` to `.env.local` (for frontend) and `.env` (for backend) respectively.
-
-### Frontend (`frontend/.env.local`)
-```ini
-# NextAuth requires a 32-byte base64 string
-# Generate via: openssl rand -base64 32
-NEXTAUTH_SECRET=your_generated_secret_here
-NEXTAUTH_URL=http://localhost:3000
-
-# Get these from Google Cloud Console -> APIs & Services -> Credentials
-GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=your_google_client_secret
-
-# Get from Neon.tech Dashboard
-DATABASE_URL=postgresql://user:password@ep-host.neon.tech/nyaysetu?sslmode=require
-
-# Get from Supabase Project settings
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-
-NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
-PYTHON_BACKEND_URL=http://localhost:8000
+```bash
+cd frontend
+npm install
+copy .env.example .env.local
+npm run dev -- -p 3005
 ```
 
-### Backend (`backend/.env`)
-```ini
-# Same Neon DB string as frontend
-DATABASE_URL=postgresql://user:password@ep-host.neon.tech/nyaysetu?sslmode=require
+Frontend runs at `http://localhost:3005` when using the command above.
 
-# API Keys for Core Services
-ANTHROPIC_API_KEY=sk-ant-your_anthropic_api_key
-SARVAM_API_KEY=your_sarvam_api_key
-INDIANKANOON_API_KEY=your_indian_kanoon_token
+## Demo Accounts
 
-# Twilio SMS Alerts
-TWILIO_ACCOUNT_SID=AC_your_twilio_account_sid
-TWILIO_AUTH_TOKEN=your_twilio_auth_token
-TWILIO_FROM_NUMBER=+1234567890
-```
+Demo sign-in is supported from the login page. The temporary password is `password123`.
 
-## API Routes & Endpoints
+| Role | Email |
+| --- | --- |
+| Lawyer | `lawyer@nyaysetu.demo` |
+| Judge | `judge@nyaysetu.demo` |
+| Citizen | `citizen@nyaysetu.demo` |
 
-### Frontend Proxy Routes
-These Next.js route handlers securely proxy requests to the Python backend or Supabase:
-- `GET /api/agent-stream/[caseId]`: Streams SSE from the LangGraph backend.
-- `GET /api/petition/[caseId]/pdf`: Proxies the generated PDF document.
-- `POST /api/upload`: Uploads to Supabase and returns signed URLs.
-- `GET/POST /api/cases`: Interacts directly with Drizzle ORM and triggers the backend agent chain.
+## Required Environment
 
-### Python Backend Contract
-- `POST /run-agents`: Initiates the background LangGraph orchestrator.
-- `GET /stream/{caseId}`: Yields SSE events from the active debate.
-- `GET /petition/{caseId}/pdf`: Renders the petition HTML template to PDF via WeasyPrint.
-- `POST /voice/transcribe`: Proxies raw audio to Sarvam AI.
+Never commit real `.env` files. Use the examples in `frontend/.env.example` and `backend/.env.example`.
 
-## Known Limitations
+Minimum backend secrets:
 
-While NyaySetu is built to be a robust production-grade prototype, the following limitations exist in the current implementation:
+- `DATABASE_URL`
+- `JWT_SECRET`
+- At least one model key: `GEMINI_API_KEY`, `GROQ_API_KEY`, or `ANTHROPIC_API_KEY`
 
-1. **Voice Streaming Architecture**: The `/new-case` voice recorder currently relies on the browser's `MediaRecorder` API to capture the full audio blob, which is then sent to the backend as a single `POST` request. True real-time bidirectional audio streaming (e.g., using WebSockets or WebRTC) was not fully implemented.
-2. **Twilio Sandboxing**: SMS notifications are fully wired up in the integration client, but using a trial/sandbox Twilio account requires the destination phone numbers to be manually pre-verified in the Twilio console. Unverified numbers will silently fail to receive status alerts during live demos.
-3. **IndianKanoon Rate Limits**: The free tier of the IndianKanoon API is highly restrictive. A simple in-memory backoff and rate-limiter was added to the client, but sustained concurrent agent debates will quickly exhaust the quota, triggering the gracefully degraded fallback logic.
-4. **Auth Callbacks**: `next-auth` currently redirects perfectly after login, but session invalidation edge-cases (like cookie expiration during an active Agent Arena stream) have not been rigorously handled with interceptors.
+Minimum frontend secrets:
+
+- `NEXTAUTH_SECRET`
+- `BACKEND_JWT_SECRET` matching backend `JWT_SECRET`
+- `DATABASE_URL`
+- `NEXT_PUBLIC_BACKEND_URL`
+- `PYTHON_BACKEND_URL`
+
+## Deployment
+
+### Backend on Hugging Face Spaces
+
+The backend folder is Docker-ready for Hugging Face Spaces. The Space should use the files inside `backend/` as the repo root.
+
+Required Space settings:
+
+- SDK: Docker
+- Port: `7860`
+- Secrets: values from `backend/.env.example`
+
+The local document store `backend/data/document-intelligence/` is intentionally ignored and should not be pushed.
+
+### Full App on GitHub
+
+GitHub receives the full monorepo: frontend, backend, schema, tests, and docs. Generated files, local uploads, virtual environments, and `.env` files are ignored.
+
+## Track C Fit
+
+NyaySetu is eligible for Track C because it has:
+
+- An Extractor Agent that transforms unstructured legal documents into source-grounded evidence atoms.
+- A Synthesis Agent that compiles extracted data into structured business/legal reports.
+- A Reviewer Agent that checks provenance, weak points, caveats, and data integrity.
+- Scalable multi-format ingestion and a consistent role-specific final-answer layer.
+
+## Safety Note
+
+NyaySetu gives evidence-grounded legal assistance, not legal advice or a judicial finding. Every generated answer should be reviewed before filing, relying on, or submitting it.

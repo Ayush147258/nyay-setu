@@ -1,0 +1,813 @@
+{
+  "corpus_version": "1.0",
+  "ocr_environment": {
+    "tesseract_available": false,
+    "tesseract_path": null,
+    "languages": [],
+    "required_languages": [
+      "eng",
+      "hin"
+    ]
+  },
+  "documents": 40,
+  "successful_documents": 30,
+  "parse_success_rate": 0.75,
+  "expected_fragment_recall": 0.75,
+  "structured_table_recall": 1.0,
+  "page_diagnostic_coverage": 0.6522,
+  "status_counts": {
+    "ocr_required": 10,
+    "ready": 24,
+    "partial": 6
+  },
+  "results": [
+    {
+      "id": "scanned-fir-01",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-02",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-03",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-04",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-05",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-06",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-07",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "scanned-fir-08",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 1: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 1: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "judgment-01",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-02",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-03",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-04",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-05",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-06",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-07",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "judgment-08",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "HIGH COURT",
+        "petition"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "legal-form-01",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Applicant",
+        "Case Number"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "legal-form-02",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Applicant",
+        "Case Number"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "legal-form-03",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Applicant",
+        "Case Number"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "legal-form-04",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Applicant",
+        "Case Number"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "legal-form-05",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Applicant",
+        "Case Number"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": []
+    },
+    {
+      "id": "evidence-table-01",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Provision",
+        "Finding"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "evidence-table-02",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Provision",
+        "Finding"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "evidence-table-03",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Provision",
+        "Finding"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "evidence-table-04",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Provision",
+        "Finding"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "evidence-table-05",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Provision",
+        "Finding"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "mixed-hi-en-01",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "mixed-hi-en-02",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "mixed-hi-en-03",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "mixed-hi-en-04",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "mixed-hi-en-05",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "mixed-hi-en-06",
+      "status": "partial",
+      "checksum_valid": true,
+      "pages": 2,
+      "methods": [
+        "digital",
+        "none"
+      ],
+      "confidence": [
+        0.96,
+        0.0
+      ],
+      "fragment_hits": [
+        "NyaySetu",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "Page 2: Digital text quality 0.00 was below the OCR threshold 0.55",
+        "Page 2: OCR failed safely: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "legal-memo-01",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "legal-memo-02",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "legal-memo-03",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "LEGAL MEMORANDUM",
+        "Section 154"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "case-register-01",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Case Number",
+        "Status"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "case-register-02",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Case Number",
+        "Status"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "case-register-03",
+      "status": "ready",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "digital"
+      ],
+      "confidence": [
+        1.0
+      ],
+      "fragment_hits": [
+        "Case Number",
+        "Status"
+      ],
+      "fragment_total": 2,
+      "structured_table": true,
+      "warnings": []
+    },
+    {
+      "id": "fir-image-01",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "OCR failed safely on frame 1: TesseractNotFoundError"
+      ]
+    },
+    {
+      "id": "fir-image-02",
+      "status": "ocr_required",
+      "checksum_valid": true,
+      "pages": 1,
+      "methods": [
+        "none"
+      ],
+      "confidence": [
+        0.0
+      ],
+      "fragment_hits": [],
+      "fragment_total": 2,
+      "structured_table": false,
+      "warnings": [
+        "OCR failed safely on frame 1: TesseractNotFoundError"
+      ]
+    }
+  ]
+}
