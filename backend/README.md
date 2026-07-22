@@ -14,6 +14,9 @@ This Hugging Face Space runs the NyaySetu FastAPI backend. It provides the agent
 
 This is the backend API only. The Next.js frontend is deployed separately and calls this Space over HTTPS.
 
+Frontend demo: [https://nyay-setu-arch.vercel.app/](https://nyay-setu-arch.vercel.app/)
+Backend API: [https://ayush712145-nyay-setu-backend.hf.space](https://ayush712145-nyay-setu-backend.hf.space)
+
 ## Core Pipeline
 
 ```mermaid
@@ -87,7 +90,7 @@ TWILIO_ACCOUNT_SID=AC_your_twilio_account_sid
 TWILIO_AUTH_TOKEN=your_twilio_auth_token
 TWILIO_PHONE_NUMBER=+1234567890
 
-ALLOWED_ORIGINS=https://your-frontend.vercel.app,http://localhost:3005
+ALLOWED_ORIGINS=https://nyay-setu-arch.vercel.app,http://localhost:3005,http://localhost:3000
 ENVIRONMENT=production
 LOG_LEVEL=info
 ```

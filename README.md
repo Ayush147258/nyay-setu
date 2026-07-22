@@ -4,6 +4,13 @@ NyaySetu is an agentic legal-document workspace for Indian justice workflows. It
 
 The project is built for Track C: Intelligent Document Synthesis and Analysis Agent. It includes an Extractor Agent, Synthesis Agent, Reviewer Agent, and role-specific final agents for lawyer, judge, and citizen panels.
 
+
+## Live Demo
+
+- Frontend: [https://nyay-setu-arch.vercel.app/](https://nyay-setu-arch.vercel.app/)
+- Backend API: [https://ayush712145-nyay-setu-backend.hf.space](https://ayush712145-nyay-setu-backend.hf.space)
+- Backend health: [https://ayush712145-nyay-setu-backend.hf.space/api/health](https://ayush712145-nyay-setu-backend.hf.space/api/health)
+
 ## What It Does
 
 - Upload PDFs, DOCX files, text files, spreadsheets, images, emails, and scans.
