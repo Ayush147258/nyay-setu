@@ -83,6 +83,10 @@ ANTHROPIC_API_KEY=your_claude_key
 SARVAM_API_KEY=your_sarvam_key
 INDIANKANOON_API_KEY=your_indiankanoon_key
 
+TWILIO_ACCOUNT_SID=AC_your_twilio_account_sid
+TWILIO_AUTH_TOKEN=your_twilio_auth_token
+TWILIO_PHONE_NUMBER=+1234567890
+
 ALLOWED_ORIGINS=https://your-frontend.vercel.app,http://localhost:3005
 ENVIRONMENT=production
 LOG_LEVEL=info
